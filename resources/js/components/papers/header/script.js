@@ -13,17 +13,36 @@ export default {
           title: 'INVOICE',
           image: null,
           invoiceFrom: "",
+          billTitle: "Bill To",
+          billTo: "",
+          shipTitle: "Ship To",
+          shipTo: "",
+          dateTitle: "Date",
+          dateValue: "",
+          paymentTermTitle: "Payment Terms",
+          paymentTermValue: "",
+          dueDateTitle: "Due Date",
+          dueDateValue: "",
+          poNumberTitle: "PO Number",
+          poNumberValue: "",
         }
     },
     computed: {
         checkValidation() {
-            return this.invoiceFrom.length > 0 ? true : false
+            return this.invoiceFrom ? true : false
         }
     },
       methods: {
         onFileChange(e) {
             const file = e.target.files[0];
-            this.image = URL.createObjectURL(file);
+          console.log(e)
+          this.image = URL.createObjectURL(file);
+          },
+          onChangeText(e) {
+            this.invoiceFrom = e.target.value
+          },
+          clearImage () {
+            this.image = "";
           }
       }
 }

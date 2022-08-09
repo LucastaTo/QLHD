@@ -1,7 +1,7 @@
 <template>
     <div class="header-wrapper two-col clearfix">
         <div class="title">
-            <input type="input" class="title-input" v-model="title" />
+            <input type="input" class="title-input px-3 mb-2" v-model="title" />
             <b-input-group size="lg" prepend="#" class="subtitle">
                 <b-form-input v-model="group" class="subtitle-input" />
             </b-input-group>
@@ -9,7 +9,7 @@
 
         <div class="col contact-info">
             <div class="logo noselect">
-                <label for="img" class="btn btn-secondary btn-file">
+                <label v-if="!image" for="img" class="btn btn-secondary btn-file" >
                     Add Your Logo</label
                 >
                 <input
@@ -19,19 +19,88 @@
                     accept="image/*"
                     @change="onFileChange"
                 />
-                <div id="preview">
-                    <img v-if="image" :src="image" />
+                <div id="preview" v-if="image">
+                    <img :src="image" height="100" width="200" />
+                    <button id="btnClear" @click="clearImage">X</button>
                 </div>
             </div>
-            <div class="contact from">
-                <b-form-input
+            <div class="contact-from">
+                <b-form-textarea
+                    class="px-2"
                     v-model="invoiceFrom"
-                    :state="checkValidation"
                     placeholder="This is a invoice from (required)"
                     trim
-                    aria-invalid
-                ></b-form-input>
+                ></b-form-textarea>
             </div>
+            <b-row>
+                <b-col class="contact-to col-md-6">
+                    <input
+                        type="input"
+                        class="bill-title-input px-3 mb-2"
+                        v-model="billTitle" />
+                    <b-form-textarea
+                        class="px-2"
+                        v-model="billTo"
+                        placeholder="Who is this invoice to? (required)"
+                        trim
+                    ></b-form-textarea
+                ></b-col>
+                <b-col class="contact-to col-md-6">
+                    <input
+                        type="input"
+                        class="ship-title-input px-3 mb-2"
+                        v-model="shipTitle" />
+                    <b-form-textarea
+                        class="px-2"
+                        v-model="shipTo"
+                        placeholder="(optional)"
+                        trim
+                    ></b-form-textarea
+                ></b-col>
+            </b-row>
+        </div>
+
+        <div class="col contact-details">
+            <b-input-group class="mb-2 gap-3">
+                <input
+                        type="input"
+                        class="details-title"
+                        v-model="dateTitle" />
+                <input
+                        type="date"
+                        class="details-value"
+                        v-model="dateValue" />
+            </b-input-group>
+            <b-input-group class="mb-2 gap-3">
+                <input
+                        type="input"
+                        class="details-title"
+                        v-model="paymentTermTitle" />
+                <input
+                        type="input"
+                        class="details-value"
+                        v-model="paymentTermValue" />
+            </b-input-group>
+            <b-input-group class="mb-2 gap-3">
+                <input
+                        type="input"
+                        class="details-title"
+                        v-model="dueDateTitle" />
+                <input
+                        type="date"
+                        class="details-value"
+                        v-model="dueDateValue" />
+            </b-input-group>
+            <b-input-group class="mb-2 gap-3">
+                <input
+                        type="input"
+                        class="details-title"
+                        v-model="poNumberTitle" />
+                <input
+                        type="input"
+                        class="details-value"
+                        v-model="poNumberValue" />
+            </b-input-group>
         </div>
     </div>
 </template>
@@ -71,6 +140,12 @@
     text-align: right;
 }
 
+bill-title-input,
+ship-title-input {
+    cursor: pointer;
+    width: 100%;
+}
+
 .title-input {
     cursor: pointer;
     font-size: 2.75em;
@@ -83,13 +158,55 @@
 }
 
 #preview {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    position: relative;
+}
+
+#btnClear {
+position: absolute;
+    display: block;
+    top: 5px;
+    left: 5px;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
+    background: #3a3a3a;
+    box-shadow: none;
+    border: none;
+}
+
+#btnClear:hover {
+    text-decoration: none;
+    background: #009e74;
 }
 
 #preview img {
     max-width: 100%;
     max-height: 500px;
+}
+
+.contact-info {
+    float: left;
+    width: 50%;
+}
+.contact-details {
+    float: right;
+    width: 50%;
+}
+.details-title {
+    text-align: right;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.details-value {
+
+}
+.contact-from {
+    margin: 15px 0 0;
+    max-width: 275px;
+}
+.contact-to {
+    margin: 15px 0 0;
+    max-width: 275px;
 }
 </style>
