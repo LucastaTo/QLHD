@@ -9,7 +9,11 @@
 
         <div class="col contact-info">
             <div class="logo noselect">
-                <label v-if="!image" for="img" class="btn btn-secondary btn-file" >
+                <label
+                    v-if="!image"
+                    for="img"
+                    class="btn btn-secondary btn-file"
+                >
                     Add Your Logo</label
                 >
                 <input
@@ -30,7 +34,7 @@
                     v-model="invoiceFrom"
                     placeholder="This is a invoice from (required)"
                     trim
-                ></b-form-textarea>
+                />
             </div>
             <b-row>
                 <b-col class="contact-to col-md-6">
@@ -43,8 +47,7 @@
                         v-model="billTo"
                         placeholder="Who is this invoice to? (required)"
                         trim
-                    ></b-form-textarea
-                ></b-col>
+                /></b-col>
                 <b-col class="contact-to col-md-6">
                     <input
                         type="input"
@@ -55,51 +58,50 @@
                         v-model="shipTo"
                         placeholder="(optional)"
                         trim
-                    ></b-form-textarea
-                ></b-col>
+                /></b-col>
             </b-row>
         </div>
 
         <div class="col contact-details">
             <b-input-group class="mb-2 gap-3">
-                <input
-                        type="input"
-                        class="details-title"
-                        v-model="dateTitle" />
-                <input
-                        type="date"
-                        class="details-value"
-                        v-model="dateValue" />
+                <input type="input" class="details-title" v-model="dateTitle" />
+                <b-form-input type="date" class="details-value" v-model="dateValue" />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input
-                        type="input"
-                        class="details-title"
-                        v-model="paymentTermTitle" />
-                <input
-                        type="input"
-                        class="details-value"
-                        v-model="paymentTermValue" />
+                    type="input"
+                    class="details-title"
+                    v-model="paymentTermTitle"
+                />
+                <b-form-input
+                    type="input"
+                    class="details-value"
+                    v-model="paymentTermValue"
+                />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input
-                        type="input"
-                        class="details-title"
-                        v-model="dueDateTitle" />
-                <input
-                        type="date"
-                        class="details-value"
-                        v-model="dueDateValue" />
+                    type="input"
+                    class="details-title"
+                    v-model="dueDateTitle"
+                />
+                <b-form-input
+                    type="date"
+                    class="details-value"
+                    v-model="dueDateValue"
+                />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input
-                        type="input"
-                        class="details-title"
-                        v-model="poNumberTitle" />
-                <input
-                        type="input"
-                        class="details-value"
-                        v-model="poNumberValue" />
+                    type="input"
+                    class="details-title"
+                    v-model="poNumberTitle"
+                />
+                <b-form-input
+                    type="input"
+                    class="details-value"
+                    v-model="poNumberValue"
+                />
             </b-input-group>
         </div>
     </div>
@@ -162,7 +164,7 @@ ship-title-input {
 }
 
 #btnClear {
-position: absolute;
+    position: absolute;
     display: block;
     top: 5px;
     left: 5px;
@@ -199,7 +201,7 @@ position: absolute;
     padding: 4px 8px;
 }
 .details-value {
-
+    text-align: right;
 }
 .contact-from {
     margin: 15px 0 0;
