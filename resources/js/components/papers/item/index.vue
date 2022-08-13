@@ -1,6 +1,30 @@
 <template>
     <div class="items-holder">
-        Items
+        <div class="items-table-header">
+            <b-form-input class="name-header" v-model="nameTitle" />
+            <b-form-input class="quantity-header" v-model="quantityTitle" />
+            <b-form-input class="unit-cost-header" v-model="unitCostTitle" />
+            <b-form-input class="amount-header" v-model="amountTitle" />
+        </div>
+        <div class="items-table-item" v-for="(item, index) in items">
+            <b-form-input class="name-item" v-model="item.nameValue" placeholder='Description of service or product...'/>
+            <b-form-input class="quantity-item" v-model="item.quantityValue" />
+            <b-form-input class="unit-cost-item" v-model="item.unitCostValue" />
+            <span
+                class="amount-item d-flex justify-content-end align-items-center"
+                >{{ item.amountValue }}</span
+            >
+            <b-button
+                v-if="index !== 0"
+                variant="link"
+                @click="deleteRow(index)"
+                class="btn-delete"
+                >X</b-button
+            >
+        </div>
+        <div class="btn-new-line">
+            <b-button variant="success" @click="addRow">+ Line new</b-button>
+        </div>
     </div>
 </template>
 
@@ -9,5 +33,50 @@
 <style scoped>
 .items-holder {
     padding: 30px 0;
+    display: grid;
+    gap: 4px;
+}
+.items-table-header {
+    display: grid;
+    grid-template-columns: 70% 10% 10% 10%;
+    background: #232e38;
+}
+.items-table-item {
+    display: grid;
+    grid-template-columns: 70% 10% 10% 10%;
+    gap: 2px;
+    position: relative;
+}
+.btn-delete {
+    position: absolute !important;
+    right: -45px;
+    top: 0;
+}
+.btn-link {
+    text-decoration: auto;
+    color: #009e74;
+}
+.name-header,
+.quantity-header,
+.unit-cost-header,
+.amount-header {
+    background: #232e38;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0;
+}
+
+.amount-item {
+    text-align: right;
+}
+
+.name-header:focus,
+.quantity-header:focus,
+.unit-cost-header:focus,
+.amount-header:focus {
+    background: #879099;
+    box-shadow: none;
+    color: #fff;
+    border: 0;
 }
 </style>

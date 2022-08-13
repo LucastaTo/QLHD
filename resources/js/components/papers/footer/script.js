@@ -19,11 +19,44 @@ export default {
             amountPaidValue: "",
             balanceDue: "Balance Due",
             balanceDueValue: "0.00",
+            showByIndex: null,
             fields: {
                 discounts: false,
-                tax: false,
+                tax: true,
                 shipping: false,
             },
         }
     },
+      methods: {
+        showInput(string) {
+            switch(string) {
+                case 'discounts':
+                     this.fields.discounts = true;
+                     break;
+                case 'tax':
+                    this.fields.tax = true;
+                     break;
+                     case 'shipping':
+                    this.fields.shipping = true;
+                     break;
+                     default:
+                     break;
+            }
+          },
+          hideInput(string) {
+            switch(string) {
+                case 'discounts':
+                     this.fields.discounts = false;
+                     break;
+                case 'tax':
+                    this.fields.tax = false;
+                     break;
+                     case 'shipping':
+                    this.fields.shipping = false;
+                     break;
+                     default:
+                     break;
+            }
+          },
+        }
 }

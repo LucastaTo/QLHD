@@ -13,6 +13,8 @@
                         v-model="notesValue"
                         placeholder="Notes - any relevant information not already covered"
                         trim
+                        rows="3"
+                        no-resize
                     />
                 </div>
 
@@ -27,6 +29,8 @@
                         v-model="termsValue"
                         placeholder="Terms and conditions - late fees, payment methods, delivery schedule"
                         trim
+                        rows="3"
+                        no-resize
                     />
                 </div>
             </b-col>
@@ -52,6 +56,12 @@
                         class="details-value"
                         v-model="discountValue"
                     />
+                    <b-button
+                        variant="link"
+                        @click="hideInput('discounts')"
+                        class="btn-hide"
+                        >X</b-button
+                    >
                 </b-input-group>
 
                 <b-input-group class="mb-2 gap-3" v-if="fields.tax">
@@ -61,6 +71,12 @@
                         class="details-value"
                         v-model="taxValue"
                     />
+                    <b-button
+                        variant="link"
+                        @click="hideInput('tax')"
+                        class="btn-hide"
+                        >X</b-button
+                    >
                 </b-input-group>
 
                 <b-input-group class="mb-2 gap-3" v-if="fields.shipping">
@@ -74,12 +90,36 @@
                         class="details-value"
                         v-model="shippingValue"
                     />
+                    <b-button
+                        variant="link"
+                        @click="hideInput('shipping')"
+                        class="btn-hide"
+                        >X</b-button
+                    >
                 </b-input-group>
 
-                <b-input-group class="mb-2 gap-3">
-                    <b-button variant="link" :pressed.sync="fields.discounts">+ Discount</b-button>
-                    <b-button variant="link" :pressed.sync="fields.tax">+ Tax</b-button>
-                    <b-button variant="link" :pressed.sync="fields.shipping">+ Shipping</b-button>
+                <b-input-group class="mb-2 gap-3 justify-content-end">
+                    <b-button
+                        variant="link"
+                        :click="fields.discounts"
+                        v-if="fields.discounts === false"
+                        @click="showInput('discounts')"
+                        >+ Discount</b-button
+                    >
+                    <b-button
+                        variant="link"
+                        :pressed.sync="fields.tax"
+                        v-if="fields.tax === false"
+                        @click="showInput('tax')"
+                        >+ Tax</b-button
+                    >
+                    <b-button
+                        variant="link"
+                        :pressed.sync="fields.shipping"
+                        v-if="fields.shipping === false"
+                        @click="showInput('shipping')"
+                        >+ Shipping</b-button
+                    >
                 </b-input-group>
 
                 <b-input-group class="mb-2 gap-3">
@@ -128,5 +168,14 @@
 }
 .details-value {
     text-align: right;
+}
+.btn-hide {
+    position: absolute !important;
+    right: -35px;
+    top: 0;
+}
+.btn-link {
+    text-decoration: auto;
+    color: #009e74;
 }
 </style>
