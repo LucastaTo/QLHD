@@ -10,7 +10,7 @@
                     />
                     <b-form-textarea
                         class="px-2"
-                        v-model="notesValue"
+                        v-model="invoices.notesValue"
                         placeholder="Notes - any relevant information not already covered"
                         trim
                         rows="3"
@@ -22,11 +22,11 @@
                     <input
                         type="input"
                         class="bill-title-input px-3 mb-2"
-                        v-model="termsTitle"
+                        v-model="invoices.termsTitle"
                     />
                     <b-form-textarea
                         class="px-2"
-                        v-model="termsValue"
+                        v-model="invoices.termsValue"
                         placeholder="Terms and conditions - late fees, payment methods, delivery schedule"
                         trim
                         rows="3"
@@ -40,22 +40,33 @@
                     <input
                         type="input"
                         class="details-title"
-                        v-model="subTotal"
+                        v-model="invoices.subTotal"
                     />
-                    <span style="margin-left: auto">${{ subTotalValue }}</span>
+                    <span style="margin-left: auto"
+                        >${{ invoices.subTotalValue }}.00</span
+                    >
                 </b-input-group>
 
-                <b-input-group class="mb-2 gap-3" v-if="fields.discounts">
+                <b-input-group
+                    class="mb-2"
+                    v-if="invoices.fields.discounts"
+                >
                     <input
                         type="input"
-                        class="details-title"
-                        v-model="discount"
+                        class="details-title me-3"
+                        v-model="invoices.discount"
                     />
+                    <span class="border d-flex justify-content-center align-items-center" style="width: 38px;" v-if="invoices.fields.discounts === true">$</span>
                     <b-form-input
                         type="input"
                         class="details-value"
-                        v-model="discountValue"
+                        v-model="invoices.discountValue"
+                        style="border-right: none;"
                     />
+                    <b-input-group-append>
+                        <span class="border d-flex justify-content-center align-items-center" style="width: 38px;" v-if="invoices.fields.discounts === '%'">%</span>
+                        <div class="border d-flex justify-content-center align-items-center" style="width: 38px;" role='button' @click="changeFieldOption('discounts')"><font-awesome-icon icon="fa-solid fa-repeat" /></div>
+                     </b-input-group-append>
                     <b-button
                         variant="link"
                         @click="hideInput('discounts')"
@@ -64,13 +75,22 @@
                     >
                 </b-input-group>
 
-                <b-input-group class="mb-2 gap-3" v-if="fields.tax">
-                    <input type="input" class="details-title" v-model="tax" />
+                <b-input-group class="mb-2" v-if="invoices.fields.tax">
+                    <input
+                        type="input"
+                        class="details-title"
+                        v-model="invoices.tax"
+                    />
+                    <span class="border d-flex justify-content-center align-items-center" style="width: 38px;" v-if="invoices.fields.tax === true">$</span>
                     <b-form-input
                         type="input"
                         class="details-value"
-                        v-model="taxValue"
+                        v-model="invoices.taxValue"
                     />
+                    <b-input-group-append>
+                        <span class="border d-flex justify-content-center align-items-center" style="width: 38px;" v-if="invoices.fields.tax === '%'">%</span>
+                        <div class="border d-flex justify-content-center align-items-center" style="width: 38px;" role='button' @click="changeFieldOption('tax')"><font-awesome-icon icon="fa-solid fa-repeat" /></div>
+                     </b-input-group-append>
                     <b-button
                         variant="link"
                         @click="hideInput('tax')"
@@ -79,16 +99,20 @@
                     >
                 </b-input-group>
 
-                <b-input-group class="mb-2 gap-3" v-if="fields.shipping">
+                <b-input-group
+                    class="mb-2 "
+                    v-if="invoices.fields.shipping"
+                >
                     <input
                         type="input"
-                        class="details-title"
-                        v-model="shipping"
+                        class="details-title me-3"
+                        v-model="invoices.shipping"
                     />
+                    <span class="border d-flex justify-content-center align-items-center" style="width: 38px;">$</span>
                     <b-form-input
                         type="input"
                         class="details-value"
-                        v-model="shippingValue"
+                        v-model="invoices.shippingValue"
                     />
                     <b-button
                         variant="link"
@@ -101,43 +125,49 @@
                 <b-input-group class="mb-2 gap-3 justify-content-end">
                     <b-button
                         variant="link"
-                        :click="fields.discounts"
-                        v-if="fields.discounts === false"
+                        :click="invoices.fields.discounts"
+                        v-if="invoices.fields.discounts === false"
                         @click="showInput('discounts')"
                         >+ Discount</b-button
                     >
                     <b-button
                         variant="link"
-                        :pressed.sync="fields.tax"
-                        v-if="fields.tax === false"
+                        :pressed.sync="invoices.fields.tax"
+                        v-if="invoices.fields.tax === false"
                         @click="showInput('tax')"
                         >+ Tax</b-button
                     >
                     <b-button
                         variant="link"
-                        :pressed.sync="fields.shipping"
-                        v-if="fields.shipping === false"
+                        :pressed.sync="invoices.fields.shipping"
+                        v-if="invoices.fields.shipping === false"
                         @click="showInput('shipping')"
                         >+ Shipping</b-button
                     >
                 </b-input-group>
 
                 <b-input-group class="mb-2 gap-3">
-                    <input type="input" class="details-title" v-model="total" />
-                    <span style="margin-left: auto">${{ totalValue }}</span>
+                    <input
+                        type="input"
+                        class="details-title"
+                        v-model="invoices.total"
+                    />
+                    <span style="margin-left: auto"
+                        >${{ invoices.totalValue }}.00</span
+                    >
                 </b-input-group>
 
                 <b-input-group class="mb-2 gap-3">
                     <input
                         type="input"
                         class="details-title"
-                        v-model="amountPaid"
+                        v-model="invoices.amountPaid"
                     />
                     <div>
                         <b-input-group prepend="$" class="group-items">
                             <b-form-input
                                 type="number"
-                                v-model="amountPaidValue"
+                                v-model="invoices.amountPaidValue"
                             />
                         </b-input-group>
                     </div>
@@ -147,10 +177,10 @@
                     <input
                         type="input"
                         class="details-title"
-                        v-model="balanceDue"
+                        v-model="invoices.balanceDue"
                     />
                     <span style="margin-left: auto"
-                        >${{ balanceDueValue }}</span
+                        >${{ invoices.balanceDueValue }}.00</span
                     >
                 </b-input-group>
             </b-col>

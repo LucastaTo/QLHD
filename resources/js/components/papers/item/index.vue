@@ -1,18 +1,18 @@
 <template>
     <div class="items-holder">
         <div class="items-table-header">
-            <b-form-input class="name-header" v-model="nameTitle" />
-            <b-form-input class="quantity-header" v-model="quantityTitle" />
-            <b-form-input class="unit-cost-header" v-model="unitCostTitle" />
-            <b-form-input class="amount-header" v-model="amountTitle" />
+            <b-form-input class="name-header" v-model="invoices.nameTitle" />
+            <b-form-input class="quantity-header" v-model="invoices.quantityTitle" />
+            <b-form-input class="unit-cost-header" v-model="invoices.unitCostTitle" />
+            <b-form-input class="amount-header" v-model="invoices.amountTitle" />
         </div>
-        <div class="items-table-item" v-for="(item, index) in items">
+        <div class="items-table-item" v-for="(item, index) in invoices.items">
             <b-form-input class="name-item" v-model="item.nameValue" placeholder='Description of service or product...'/>
             <b-form-input class="quantity-item" v-model="item.quantityValue" />
             <b-form-input class="unit-cost-item" v-model="item.unitCostValue" />
             <span
                 class="amount-item d-flex justify-content-end align-items-center"
-                >{{ item.amountValue }}</span
+                >${{ item.amountValue }}.00</span
             >
             <b-button
                 v-if="index !== 0"

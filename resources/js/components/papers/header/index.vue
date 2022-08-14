@@ -1,16 +1,16 @@
 <template>
     <div class="header-wrapper two-col clearfix">
         <div class="title">
-            <input type="input" class="title-input px-3 mb-2" v-model="title" />
+            <input type="input" class="title-input px-3 mb-2" v-model="invoices.title" />
             <b-input-group size="lg" prepend="#" class="subtitle">
-                <b-form-input v-model="group" class="subtitle-input" />
+                <b-form-input v-model="invoices.group" class="subtitle-input" />
             </b-input-group>
         </div>
 
         <div class="col contact-info">
             <div class="logo noselect">
                 <label
-                    v-if="!image"
+                    v-if="!invoices.image"
                     for="img"
                     class="btn btn-secondary btn-file"
                 >
@@ -23,17 +23,19 @@
                     accept="image/*"
                     @change="onFileChange"
                 />
-                <div id="preview" v-if="image">
-                    <img :src="image" height="100" width="200" />
+                <div id="preview" v-if="invoices.image">
+                    <img :src="invoices.image" height="100" width="200" />
                     <button id="btnClear" @click="clearImage">X</button>
                 </div>
             </div>
             <div class="contact-from">
                 <b-form-textarea
                     class="px-2"
-                    v-model="invoiceFrom"
+                    v-model="invoices.invoiceFrom"
                     placeholder="This is a invoice from (required)"
                     trim
+                    rows="3"
+                        no-resize
                 />
             </div>
             <b-row>
@@ -41,66 +43,70 @@
                     <input
                         type="input"
                         class="bill-title-input px-3 mb-2"
-                        v-model="billTitle" />
+                        v-model="invoices.billTitle" />
                     <b-form-textarea
                         class="px-2"
-                        v-model="billTo"
+                        v-model="invoices.billTo"
                         placeholder="Who is this invoice to? (required)"
                         trim
+                        rows="3"
+                        no-resize
                 /></b-col>
                 <b-col class="contact-to col-md-6">
                     <input
                         type="input"
                         class="ship-title-input px-3 mb-2"
-                        v-model="shipTitle" />
+                        v-model="invoices.shipTitle" />
                     <b-form-textarea
                         class="px-2"
-                        v-model="shipTo"
+                        v-model="invoices.shipTo"
                         placeholder="(optional)"
                         trim
+                        rows="3"
+                        no-resize
                 /></b-col>
             </b-row>
         </div>
 
         <div class="col contact-details">
             <b-input-group class="mb-2 gap-3">
-                <input type="input" class="details-title" v-model="dateTitle" />
-                <b-form-input type="date" class="details-value" v-model="dateValue" />
+                <input type="input" class="details-title" v-model="invoices.dateTitle" />
+                <b-form-input type="date" class="details-value" v-model="invoices.dateValue" />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input
                     type="input"
                     class="details-title"
-                    v-model="paymentTermTitle"
+                    v-model="invoices.paymentTermTitle"
                 />
                 <b-form-input
                     type="input"
                     class="details-value"
-                    v-model="paymentTermValue"
+                    v-model="invoices.paymentTermValue"
                 />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input
                     type="input"
                     class="details-title"
-                    v-model="dueDateTitle"
+                    v-model="invoices.dueDateTitle"
                 />
                 <b-form-input
                     type="date"
                     class="details-value"
-                    v-model="dueDateValue"
+                    v-model="invoices.dueDateValue"
                 />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input
                     type="input"
                     class="details-title"
-                    v-model="poNumberTitle"
+                    v-model="invoices.poNumberTitle"
                 />
                 <b-form-input
                     type="input"
                     class="details-value"
-                    v-model="poNumberValue"
+                    v-model="invoices.poNumberValue"
                 />
             </b-input-group>
         </div>
