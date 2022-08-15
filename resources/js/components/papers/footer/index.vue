@@ -78,7 +78,7 @@
                 <b-input-group class="mb-2" v-if="invoices.fields.tax">
                     <input
                         type="input"
-                        class="details-title"
+                        class="details-title me-3"
                         v-model="invoices.tax"
                     />
                     <span class="border d-flex justify-content-center align-items-center" style="width: 38px;" v-if="invoices.fields.tax === true">$</span>
@@ -164,7 +164,8 @@
                         v-model="invoices.amountPaid"
                     />
                     <div>
-                        <b-input-group prepend="$" class="group-items">
+                        <b-input-group  class="group-items">
+                         <span class="border d-flex justify-content-center align-items-center" style="width: 38px;">$</span>
                             <b-form-input
                                 type="number"
                                 v-model="invoices.amountPaidValue"
