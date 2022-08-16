@@ -86,9 +86,31 @@ export default {
             "invoices.amountPaidValue",
             function (after, before) {
                 let temp = this.invoices.balanceDueValue
-                if (after) temp = Number(temp) - Number(after);
-                else temp = Number(temp) + Number(before);
+                if (after) temp = Number(temp) - Number(after) + Number(before);
+                else temp = Number(temp) + Number(before) - Number(after) ;
                 this.invoices.balanceDueValue = temp
+            },
+            { deep: true }
+        );
+
+        this.$watch(
+            "invoices.totalValue",
+            function () {
+                if (this.invoices.subTotalValue === 0){
+                this.invoices.balanceDueValue = -Number(this.invoices.discountValue) + Number(this.invoices.taxValue) + Number(this.invoices.shippingValue)
+                this.invoices.totalValue = -Number(this.invoices.discountValue) + Number(this.invoices.taxValue) + Number(this.invoices.shippingValue)
+            } else {
+                this.invoices.balanceDueValue = Number(this.invoices.subTotalValue) -Number(this.invoices.discountValue) + Number(this.invoices.taxValue) + Number(this.invoices.shippingValue)
+                this.invoices.totalValue = Number(this.invoices.subTotalValue) -Number(this.invoices.discountValue) + Number(this.invoices.taxValue) + Number(this.invoices.shippingValue)
+            }
+            },
+            { deep: true }
+        );
+
+        this.$watch(
+            "invoices.balanceDueValue",
+            function () {
+                this.invoices.balanceDueValue =  Number(this.invoices.totalValue) - Number(this.invoices.amountPaidValue) 
             },
             { deep: true }
         );

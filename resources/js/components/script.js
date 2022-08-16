@@ -11,4 +11,12 @@ export default {
         Header,
         Footer,
       },
+      data() {
+        return {
+          screenRef : {}
+        }
+      },
+      mounted() {
+        this.screenRef = document.querySelector(".card-papers")
+    }
 }

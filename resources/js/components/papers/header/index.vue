@@ -156,7 +156,7 @@ ship-title-input {
 
 .title-input {
     cursor: pointer;
-    font-size: 2.75em;
+    font-size: 1.55em;
     width: 100%;
     text-align: right;
 }
