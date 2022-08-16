@@ -39108,7 +39108,7 @@ __webpack_require__.r(__webpack_exports__);
     });
     this.$watch("invoices.shippingValue", function (after, before) {
       var temp = this.invoices.totalValue;
-      if (after) temp = Number(temp) + Number(after);else temp = Number(temp) - Number(before);
+      if (after > before) temp = Number(temp) + Number(after) - Number(before);else temp = Number(temp) - Number(before) + Number(after);
       this.invoices.balanceDueValue = temp;
       this.invoices.totalValue = temp;
     }, {
@@ -39117,16 +39117,16 @@ __webpack_require__.r(__webpack_exports__);
     this.$watch("invoices.taxValue", function (after, before) {
       var temp = this.invoices.totalValue;
 
-      if (after) {
+      if (after > before) {
         if (this.invoices.fields.tax === "%") {
-          temp = Number(temp) / Number(after);
+          temp = Number(temp) / (Number(after) - Number(before));
           temp = Number(this.invoices.totalValue) + temp;
-        } else temp = Number(temp) + Number(after);
+        } else temp = Number(temp) + Number(after) - Number(before);
       } else {
         if (this.invoices.fields.tax === "%") {
-          temp = Number(temp) / Number(before);
+          temp = Number(temp) / (Number(before) + Number(after));
           temp = Number(this.invoices.totalValue) - temp;
-        } else temp = Number(temp) - Number(before);
+        } else temp = Number(temp) - Number(before) + Number(after);
       }
 
       this.invoices.balanceDueValue = temp;
@@ -39134,19 +39134,19 @@ __webpack_require__.r(__webpack_exports__);
     }, {
       deep: true
     });
-    this.$watch("invoices.discountValue", function (after) {
+    this.$watch("invoices.discountValue", function (after, before) {
       var temp = this.invoices.totalValue;
 
-      if (after) {
+      if (after > before) {
         if (this.invoices.fields.discounts === "%") {
-          temp = Number(temp) / Number(after);
+          temp = Number(temp) / (Number(after) + Number(before));
           temp = Number(this.invoices.totalValue) - temp;
-        } else temp = Number(temp) - Number(after);
+        } else temp = Number(temp) - Number(after) + Number(before);
       } else {
         if (this.invoices.fields.discounts === "%") {
-          temp = Number(temp) / Number(before);
+          temp = Number(temp) / (Number(before) - Number(after));
           temp = Number(this.invoices.totalValue) + temp;
-        } else temp = Number(temp) + Number(before);
+        } else temp = Number(temp) + Number(before) - Number(after);
       }
 
       this.invoices.balanceDueValue = temp;
@@ -52521,7 +52521,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.card-papers[data-v-51777872] {\r\n\tpadding: 12px;\n}\n.container[data-v-51777872] {\r\n\tpadding: 24px 15px;\n}\n.invoice-main[data-v-51777872] {\r\n\tdisplay: flex;\r\n\tgap: 24px;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.card-papers[data-v-51777872] {\r\n\tpadding: 12px;\r\n box-shadow: 1px 1px 0 rgb(0 0 0 / 10%), 3px 3px 0 #fff, 4px 4px 0 rgb(0 0 0 / 13%), 6px 6px 0 #fff, 7px 7px 0 rgb(0 0 0 / 15%);\n}\n.container[data-v-51777872] {\r\n\tpadding: 24px 15px;\n}\n.invoice-main[data-v-51777872] {\r\n\tdisplay: flex;\r\n\tgap: 24px;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -52617,7 +52617,7 @@ __webpack_require__.r(__webpack_exports__);
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.items-holder[data-v-56d5507a] {\r\n    padding: 30px 0;\r\n    display: grid;\r\n    gap: 4px;\n}\n.items-table-header[data-v-56d5507a] {\r\n    display: grid;\r\n    grid-template-columns: 70% 10% 10% 10%;\r\n    background: #232e38;\n}\n.items-table-item[data-v-56d5507a] {\r\n    display: grid;\r\n    grid-template-columns: 70% 10% 10% 10%;\r\n    gap: 2px;\r\n    position: relative;\n}\n.btn-delete[data-v-56d5507a] {\r\n    position: absolute !important;\r\n    right: -45px;\r\n    top: 0;\n}\n.btn-link[data-v-56d5507a] {\r\n    -webkit-text-decoration: auto;\r\n            text-decoration: auto;\r\n    color: #009e74;\n}\n.name-header[data-v-56d5507a],\r\n.quantity-header[data-v-56d5507a],\r\n.unit-cost-header[data-v-56d5507a],\r\n.amount-header[data-v-56d5507a] {\r\n    background: #232e38;\r\n    color: #fff;\r\n    cursor: pointer;\r\n    border-radius: 0;\n}\n.amount-item[data-v-56d5507a] {\r\n    text-align: right;\n}\n.name-header[data-v-56d5507a]:focus,\r\n.quantity-header[data-v-56d5507a]:focus,\r\n.unit-cost-header[data-v-56d5507a]:focus,\r\n.amount-header[data-v-56d5507a]:focus {\r\n    background: #879099;\r\n    box-shadow: none;\r\n    color: #fff;\r\n    border: 0;\n}\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.items-holder[data-v-56d5507a] {\r\n    padding: 30px 11px;\r\n    display: grid;\r\n    gap: 4px;\n}\n.items-table-header[data-v-56d5507a] {\r\n    display: grid;\r\n    grid-template-columns: 70% 10% 10% 10%;\r\n    background: #232e38;\n}\n.items-table-item[data-v-56d5507a] {\r\n    display: grid;\r\n    grid-template-columns: 70% 10% 10% 10%;\r\n    gap: 2px;\r\n    position: relative;\n}\n.btn-delete[data-v-56d5507a] {\r\n    position: absolute !important;\r\n    right: -45px;\r\n    top: 0;\n}\n.btn-link[data-v-56d5507a] {\r\n    -webkit-text-decoration: auto;\r\n            text-decoration: auto;\r\n    color: #009e74;\n}\n.name-header[data-v-56d5507a],\r\n.quantity-header[data-v-56d5507a],\r\n.unit-cost-header[data-v-56d5507a],\r\n.amount-header[data-v-56d5507a] {\r\n    background: #232e38;\r\n    color: #fff;\r\n    cursor: pointer;\r\n    border-radius: 0;\n}\n.amount-item[data-v-56d5507a] {\r\n    text-align: right;\n}\n.name-header[data-v-56d5507a]:focus,\r\n.quantity-header[data-v-56d5507a]:focus,\r\n.unit-cost-header[data-v-56d5507a]:focus,\r\n.amount-header[data-v-56d5507a]:focus {\r\n    background: #879099;\r\n    box-shadow: none;\r\n    color: #fff;\r\n    border: 0;\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 

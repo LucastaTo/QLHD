@@ -57,7 +57,7 @@
 
 <style scoped>
 .items-holder {
-    padding: 30px 0;
+    padding: 30px 11px;
     display: grid;
     gap: 4px;
 }

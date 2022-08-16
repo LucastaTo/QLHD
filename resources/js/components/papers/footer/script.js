@@ -25,8 +25,8 @@ export default {
             "invoices.shippingValue",
             function (after, before) {
                 let temp = this.invoices.totalValue
-                if(after) temp = Number(temp) + Number(after);
-                else temp = Number(temp) - Number(before)
+                if(after > before) temp = Number(temp) + Number(after) - Number(before);
+                else temp = Number(temp) - Number(before) + Number(after)
                 this.invoices.balanceDueValue = temp
                 this.invoices.totalValue = temp;
             },
@@ -38,18 +38,18 @@ export default {
             function (after,before) {
                 let temp = this.invoices.totalValue;
                 
-                if (after) {
+                if (after > before) {
                     if (this.invoices.fields.tax === "%") {
-                        temp = Number(temp) / Number(after)
+                        temp = Number(temp) / (Number(after) - Number(before))
                         temp = Number(this.invoices.totalValue) + temp
                     }
-                    else temp = Number(temp) + Number(after);
+                    else temp = Number(temp) + Number(after) - Number(before);
                 } else {
                     if (this.invoices.fields.tax === "%") {
-                        temp = Number(temp) / Number(before)
+                        temp = Number(temp) / (Number(before) + Number(after))
                         temp = Number(this.invoices.totalValue) - temp
                     }
-                    else temp = Number(temp) - Number(before);
+                    else temp = Number(temp) - Number(before) + Number(after);
                 }
                    
                 this.invoices.balanceDueValue = temp
@@ -60,20 +60,20 @@ export default {
 
         this.$watch(
             "invoices.discountValue",
-            function (after) {
+            function (after ,before) {
                 let temp = this.invoices.totalValue;
-                if (after) {
+                if (after > before) {
                     if (this.invoices.fields.discounts === "%") {
-                        temp = Number(temp) / Number(after)
+                        temp = Number(temp) / (Number(after) + Number(before))
                         temp = Number(this.invoices.totalValue) - temp
                     }
-                    else temp = Number(temp) - Number(after) ;
+                    else temp = Number(temp) - Number(after) + Number(before)  ;
                 } else {
                     if (this.invoices.fields.discounts === "%") {
-                        temp = Number(temp) / Number(before)
+                        temp = Number(temp) / (Number(before) - Number(after))
                         temp = Number(this.invoices.totalValue) + temp
                     }
-                    else temp = Number(temp) + Number(before) ;
+                    else temp = Number(temp) + Number(before) - Number(after);
                 }
                     
                 this.invoices.balanceDueValue = temp

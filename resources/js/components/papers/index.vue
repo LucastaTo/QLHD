@@ -12,6 +12,5 @@
 
 <style scoped>
 .invoices {
-
 }
 </style>
