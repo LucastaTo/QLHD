@@ -9,7 +9,7 @@ export default {
     },
       methods: {
         generatePDF() {
-            html2pdf(this.refCurrent, {
+            html2pdf(this.refCurrent.innerHTML, {
   			    filename: "test.pdf",
 			});
         },
