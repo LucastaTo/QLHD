@@ -78,11 +78,15 @@ export default {
       invoices:{
           handler(newValue,) {
               this.invoices = newValue
+              localStorage.setItem('data', JSON.stringify(newValue))
         },
         deep: true
       }
     },
       mounted() {
         this.screenRef = document.querySelector('.card-papers-1')
+    },
+    created() {
+      this.invoices = JSON.parse(localStorage.getItem('data'))
     }
 }
