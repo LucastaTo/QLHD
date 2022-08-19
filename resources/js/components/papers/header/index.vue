@@ -1,7 +1,11 @@
 <template>
     <div class="header-wrapper two-col clearfix">
         <div class="title">
-            <input type="input" class="title-input px-3 mb-2" v-model="invoices.title" />
+            <input
+                type="input"
+                class="title-input px-3 mb-2"
+                v-model="invoices.title"
+            />
             <b-input-group size="lg" prepend="#" class="subtitle">
                 <b-form-input v-model="invoices.group" class="subtitle-input" />
             </b-input-group>
@@ -35,7 +39,7 @@
                     placeholder="This is a invoice from (required)"
                     trim
                     rows="3"
-                        no-resize
+                    no-resize
                 />
             </div>
             <b-row>
@@ -70,8 +74,16 @@
 
         <div class="col contact-details">
             <b-input-group class="mb-2 gap-3">
-                <input type="input" class="details-title" v-model="invoices.dateTitle" />
-                <b-form-input type="date" class="details-value" v-model="invoices.dateValue" />
+                <input
+                    type="input"
+                    class="details-title"
+                    v-model="invoices.dateTitle"
+                />
+                <b-form-input
+                    type="date"
+                    class="details-value"
+                    v-model="invoices.dateValue"
+                />
             </b-input-group>
             <b-input-group class="mb-2 gap-3">
                 <input

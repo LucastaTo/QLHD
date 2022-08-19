@@ -1,10 +1,10 @@
 <template>
     <div class="invoices">
-        <Header :invoices="invoices"/>
+        <Header :invoices="invoices" />
 
-        <Items :invoices="invoices"/>
+        <Items :invoices="invoices" />
 
-        <Footer :invoices="invoices"/>
+        <Footer :invoices="invoices" />
     </div>
 </template>
 

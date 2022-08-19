@@ -4,11 +4,14 @@ import Items from "./item";
 
 export default {
     props: {
-        invoices: { type: Array, default: [] },
+        invoices: { type: Object, default: {} },
     },
     components: {
         Footer,
         Items,
         Header,
+    },
+    created() {
+        console.log(this.invoices);
     },
 };

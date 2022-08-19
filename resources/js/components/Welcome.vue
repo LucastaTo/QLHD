@@ -4,12 +4,12 @@
         <form>
             <div class="invoice-main">
                 <b-card class="card-papers">
-                    <Papers :invoices="invoices"/>
+                    <Papers :invoices="invoices" />
                 </b-card>
-                 <b-card class="card-papers-1" style='display:none;'>
-                    <PDFFile :invoices="invoices"/>
+                <b-card class="card-papers-1" style="display: none">
+                    <PDFFile :invoices="invoices" />
                 </b-card>
-                <Control :refCurrent="screenRef"/>
+                <Control :refCurrent="screenRef" />
             </div>
         </form>
     </div>
