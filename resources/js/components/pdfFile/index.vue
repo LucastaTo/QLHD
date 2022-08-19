@@ -1,168 +1,376 @@
 <template>
-<div class="my-5 my-page" size="A4">
-        <div class="p-5">
-            <section class="top-content bb d-flex">
-                <div class="logo">
-                    <img style="width: 170px;height: 130px;"
-                    src="https://e7.pngegg.com/pngimages/380/975/png-clipart-panda-logo-creative-panda-logo-cute-panda-logo-thumbnail.png" alt="" class="img-fluid">
+    <div class="my-5 my-page" size="A4">
+        <div class="header-wrapper two-col clearfix">
+            <div class="title">
+                <span class="title-input px-3 mb-2">
+                    {{ invoices.title }}
+                </span>
+                <div class="subtitle">
+                    <span class="subtitle-input"># {{ invoices.group }} </span>
                 </div>
-                <div class="top-left">
-                    <p style="font-weight:bold; font-size:20px;">TIRAMISU CAKE ltd. COMPANY</p>
-                    <div class="cpn_header">
-                    <table cellpadding="0" cellspacing="1">
-                        <tr>
-                            <td class="cpn_info"><span class="texcode">Tex-code</span></td>
-                            <td><span id="code" class="Label">: 0 3 0 0 5 2 1 7 5 8</span></td>
-                        </tr>
-                        <tr>
-                            <td class="cpn_info"><span>Address</span></td>
-                            <td><span class="Label">: 170E Phan Dang Luu Street, Ward 3, Phu Nhuan District.</span></td>
-                        </tr>
-                        <tr>
-                        <td class="cpn_info"><span class="phone">Phone number</span></td>
-                            <td><span class="Label">: 0394.081.802</span></td>
-                        </tr>
-                        <tr>
-                        <td class="cpn_info"><span class="account">Account No</span></td>
-                            <td><span class="Label">: 0123456789999 - Argibank Viet Nam </span></td>
-                        </tr>
-                    </table>
-                </div>
-                </div>
-
-            </section>
-
-            <section class="title mt-5">
-                <div class="cpny-info">
-                    <h4>VAT INVOICE</h4>
-                    <div class="row extra-info" style="display:flex; text-align: justify;">
-                        <div class="col-3">
-                            <img src="https://anhong.com.vn/wp-content/uploads/2020/09/ma-qrcode-https-baohodoanhnghiep-com.png">
-                        </div>
-                        <div class="col-5">
-                            <p style="padding-left: 90px;">Due Date: <span>01 - 08 - 2022</span></p>
-                        </div>
-                        <div class="col-4">
-                            <p>Invoice No: <span style="color: #D51A1F; font-weight:bold">000000</span></p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <section class="cus-info">
-                <table cellpadding="0" cellspacing="1">
-                    <tr>
-                        <td style="text-align: left; width: 150px; font-weight:700;"><span>Customer:</span></td>
-                        <td><span>a</span></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left; width: 150px; font-weight:700;"><span>Company name:</span></td>
-                        <td><span>a</span></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left; width: 150px; font-weight:700;"><span>Tex code:</span></td>
-                        <td><span>a</span></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left; width: 150px; font-weight:700;"><span>Address:</span></td>
-                        <td><span>a</span></td>
-                    </tr>
-                    <tr>
-                        <td style="text-align: left; width: 150px; font-weight:700; font-size:30px;"><span>Payment method:</span></td>
-                        <td><span>{{invoices.billTo}}</span></td>
-                        <td style="text-align: left; width: 150px; font-weight:700;"><span>Account No:</span></td>
-                        <td><span>a</span></td>
-                    </tr>    
-                </table>
-            </section>
-
-            <div class="product_container">
-			<table class="item_table" border="1" cellspacing="0">
-				<tr style="background-color: #92b4f0;">
-					<th>Sl. No.</th>
-					<th>Item</th>
-					<th>Price</th>
-					<th>Qty</th>
-					<th>Total</th>
-				</tr>
-                <tr>
-					<th>1</th>
-					<th>2</th>
-					<th>3</th>
-					<th>4</th>
-					<th>5</th>
-				</tr>
-				<tr class="item_border">
-					<td>1</td>
-					<td class="description">Samsung M31 mobile</td>
-					<td>20,000</td>
-					<td>2</td>
-					<td>38000</td>
-				</tr>
-                <tr class="item_border">
-					<td>1</td>
-					<td class="description">Samsung M31 mobile</td>
-					<td>20,000</td>
-					<td>2</td>
-					<td>38000</td>
-				</tr>                                     
-                </table>
             </div>
 
-            <section class="balance-info">
-                <div class="note_total">
-                    <div class="col-7">
-                        <p class="m-0 font-weight-bold"> Note: </p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. In delectus, adipisci vero est dolore praesentium.</p>
-                    </div>
-                    <div class="col-5">
-                        <table class="table border-0">
-                            <tr>
-                                <td>Sub Total:</td>
-                                <td>800$</td>
-                            </tr>
-                            <tr>
-                                <td>Tax:</td>
-                                <td>15$</td>
-                            </tr>
-                            <tr>
-                                <td>Deliver:</td>
-                                <td>10$</td>
-                            </tr>
-                            <tr>
-                                <td>Discount:</td>
-                                <td>10$</td>
-                            </tr>
-                            <tfoot>
-                                <tr>
-                                    <td>Total:</td>
-                                    <td>825$</td>
-                                </tr>
-                            </tfoot>
-                        </table>
+            <div class="col contact-info">
+                <div class="logo noselect" >
+                    <div id="preview">
+                        <img :src="invoices.image" height="200" width="150" v-if="invoices.image"/>
+                        <div style="height: 200px; width: 150px;" v-if="!invoices.image"></div>
                     </div>
                 </div>
-                    <!-- Signature -->
-                    <div class="signature">
-                        <div class="col-6">
-                            <img src="" class="img-fluid" alt="">
-                            <p class="text-center m-0"> Customer Signature </p>
-                        </div>
-                        <div class="col-6">
-                            <img src="" class="img-fluid" alt="">
-                            <p class="text-center m-0"> Director Signature </p>
-                        </div>
+                <div class="contact-from">
+                    <span class="px-2">
+                        <b>{{ invoices.invoiceFrom }} </b>
+                    </span>
+                </div>
+                <b-row>
+                    <b-col class="contact-to col-md-6">
+                        <span class="bill-title-input px-3 mb-2">
+                            {{ invoices.billTitle }} :
+                        </span>
+                        <span class="px-2">
+                            <b> {{ invoices.billTo }} </b>
+                        </span>
+                    </b-col>
+
+                    <b-col class="contact-to col-md-6">
+                        <span class="ship-title-input px-3 mb-2">
+                            {{ invoices.shipTitle }} :
+                        </span>
+                        <span class="px-2">
+                            <b> {{ invoices.shipTo }} </b>
+                        </span>
+                    </b-col>
+                </b-row>
+            </div>
+
+            <div class="col contact-details">
+                <b-input-group
+                    class="mb-2 gap-3 justify-content-between align-items-center"
+                >
+                    <span class="details-title">
+                        {{ invoices.dateTitle }}:
+                    </span>
+                    <span class="details-value">
+                        {{ invoices.dateValue }}
+                    </span>
+                </b-input-group>
+                <b-input-group
+                    class="mb-2 gap-3 justify-content-between align-items-center"
+                >
+                    <span class="details-title">
+                        {{ invoices.paymentTermTitle }}:
+                    </span>
+                    <span class="details-value">
+                        {{ invoices.paymentTermValue }}
+                    </span>
+                </b-input-group>
+                <b-input-group
+                    class="mb-2 gap-3 justify-content-between align-items-center"
+                >
+                    <span class="details-title">
+                        {{ invoices.dueDateTitle }}:
+                    </span>
+                    <span class="details-value">
+                        {{ invoices.dueDateValue }}
+                    </span>
+                </b-input-group>
+                <b-input-group
+                    class="mb-2 gap-3 justify-content-between align-items-center"
+                >
+                    <span class="details-title">
+                        {{ invoices.poNumberTitle }}:
+                    </span>
+                    <span class="details-value">
+                        {{ invoices.poNumberValue }}
+                    </span>
+                </b-input-group>
+
+                <b-input-group
+                    class="mb-2 gap-3 justify-content-between align-items-center"
+                    style="background: #f5f5f5; font-size: 20px"
+                >
+                    <span class="details-title">
+                        <b>{{ invoices.balanceDue }}:</b>
+                    </span>
+                    <span class="details-value">
+                        <b>US${{ invoices.balanceDueValue }}.00</b>
+                    </span>
+                </b-input-group>
+            </div>
+        </div>
+
+        <div class="items-holder">
+            <div class="items-table-header">
+                <span class="name-header"> {{ invoices.nameTitle }} </span>
+                <span class="quantity-header">
+                    {{ invoices.quantityTitle }}
+                </span>
+                <span class="unit-cost-header">
+                    {{ invoices.unitCostTitle }}
+                </span>
+                <span class="amount-header"> {{ invoices.amountTitle }} </span>
+            </div>
+            <div
+                class="items-table-item"
+                v-for="(item, index) in invoices.items"
+            >
+                <span class="name-item"
+                    ><b>{{ item.nameValue }}</b></span
+                >
+
+                <span
+                    class="quantity-item d-flex justify-content-end align-items-center"
+                    >{{ item.quantityValue }}</span
+                >
+
+                <span
+                    class="unit-cost-item d-flex justify-content-end align-items-center"
+                    >US${{ item.unitCostValue }}.00</span
+                >
+
+                <span
+                    class="amount-item d-flex justify-content-end align-items-center"
+                    >US${{ item.amountValue }}.00</span
+                >
+            </div>
+        </div>
+
+        <div class="two-col clearfix">
+            <b-row>
+                <b-col class="footer"> </b-col>
+
+                <b-col class="rates">
+                    <b-input-group
+                        class="mb-2 gap-3 justify-content-between align-items-center"
+                    >
+                        <span class="details-title">
+                            {{ invoices.subTotal }}:
+                        </span>
+                        <span class="margin-left: auto">
+                            <b>US${{ invoices.subTotalValue }}.00</b>
+                        </span>
+                    </b-input-group>
+
+                    <b-input-group
+                        class="mb-2 gap-3 justify-content-between align-items-center"
+                        v-if="invoices.fields.discounts"
+                    >
+                        <span class="details-title">
+                            {{ invoices.discount }}:
+                        </span>
+                        <span class="text-align: left;">
+                            <b>US${{ invoices.discountValue }}.00</b>
+                        </span>
+                    </b-input-group>
+
+                    <b-input-group
+                        class="mb-2 gap-3 justify-content-between align-items-center"
+                        v-if="invoices.fields.tax"
+                    >
+                        <span class="details-title"> {{ invoices.tax }}: </span>
+                        <span class="text-align: left;">
+                            <b>US${{ invoices.taxValue }}.00</b>
+                        </span>
+                    </b-input-group>
+
+                    <b-input-group
+                        class="mb-2 gap-3 justify-content-between align-items-center"
+                        v-if="invoices.fields.shipping"
+                    >
+                        <span class="details-title">
+                            {{ invoices.shipping }}:
+                        </span>
+                        <span class="text-align: left;">
+                            <b>US${{ invoices.shippingValue }}.00</b>
+                        </span>
+                    </b-input-group>
+
+                    <b-input-group
+                        class="mb-2 gap-3 justify-content-between align-items-center"
+                    >
+                        <span class="details-title">
+                            {{ invoices.total }}:
+                        </span>
+                        <span class="text-align: left;">
+                            <b>US${{ invoices.totalValue }}.00</b>
+                        </span>
+                    </b-input-group>
+
+                    <b-input-group
+                        class="mb-2 gap-3 justify-content-between align-items-center"
+                    >
+                        <span class="details-title">
+                            {{ invoices.amountPaid }}:
+                        </span>
+                        <span class="text-align: left;">
+                            <b>US${{ invoices.amountPaidValue }}.00</b>
+                        </span>
+                    </b-input-group>
+                </b-col>
+            </b-row>
+
+            <b-row>
+                <b-col>
+                    <div class="notes-holder">
+                        <span class="bill-title-input px-3 mb-2">
+                            {{ invoices.notesTitle }} :
+                        </span>
+                        <span class="px-2">
+                            {{ invoices.notesValue }}
+                        </span>
                     </div>
-            </section>
-            <footer>
-                <section class="top-content aa">
-                    <div class="footer-info">
-                    <i>Tiramisu Ltd. Company My-Invoice, Tex-code: 0300521758</i>
+
+                    <div class="terms-holder pt-2">
+                        <span class="bill-title-input px-3 mb-2">
+                            {{ invoices.termsTitle }} :
+                        </span>
+                        <span class="px-2">
+                            {{ invoices.termsValue }}
+                        </span>
                     </div>
-                </section>
-            </footer>
+                </b-col>
+            </b-row>
         </div>
     </div>
-    
 </template>
 
 <script src="./script.js"></script>
+
+<style scoped>
+.header-wrapper {
+}
+
+.title {
+    display: flex;
+    flex-direction: column;
+    margin: 0 30px 45px 0;
+    float: right;
+    text-align: right;
+    max-width: 45%;
+}
+.subtitle {
+    text-align: right;
+    max-width: 170px;
+    float: right;
+}
+
+.subtitle-input {
+    text-align: right;
+}
+
+bill-title-input,
+ship-title-input {
+    cursor: pointer;
+    width: 100%;
+}
+
+.title-input {
+    cursor: pointer;
+    font-size: 2.75em;
+    width: 100%;
+    text-align: right;
+}
+
+#preview {
+    position: relative;
+}
+
+#btnClear {
+    position: absolute;
+    display: block;
+    top: 5px;
+    left: 5px;
+    padding: 0 5px;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
+    background: #3a3a3a;
+    box-shadow: none;
+    border: none;
+}
+
+#preview img {
+    max-width: 100%;
+    max-height: 500px;
+}
+
+.contact-info {
+    float: left;
+    width: 50%;
+}
+.contact-details {
+    float: right;
+    width: 50%;
+}
+.details-title {
+    text-align: right;
+    cursor: pointer;
+    padding: 4px 8px;
+}
+.details-value {
+    text-align: right;
+}
+.contact-from {
+    margin: 15px 0 0;
+    max-width: 275px;
+}
+.contact-to {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0 0;
+    max-width: 275px;
+}
+
+.items-holder {
+    padding: 30px 11px;
+    display: grid;
+    gap: 4px;
+}
+.items-table-header {
+    display: grid;
+    grid-template-columns: 55% 15% 15% 15%;
+    background: #232e38;
+}
+.items-table-item {
+    display: grid;
+    grid-template-columns: 55% 15% 15% 15%;
+    gap: 2px;
+    position: relative;
+}
+.btn-delete {
+    position: absolute !important;
+    right: -45px;
+    top: 0;
+}
+.btn-link {
+    text-decoration: auto;
+    color: #009e74;
+}
+.name-header,
+.quantity-header,
+.unit-cost-header,
+.amount-header {
+    background: #232e38;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 0;
+    margin-left: 10px;
+}
+
+.amount-item {
+    text-align: right;
+}
+
+.name-header:focus,
+.quantity-header:focus,
+.unit-cost-header:focus,
+.amount-header:focus {
+    background: #879099;
+    box-shadow: none;
+    color: #fff;
+    border: 0;
+}
+.my-page {
+    padding: 24px;
+}
+</style>
