@@ -77,17 +77,47 @@ export default {
         invoices: {
             handler(newValue) {
                 this.invoices = newValue;
-                localStorage.setItem("data", JSON.stringify(newValue));
+                localStorage.setItem(
+                    "data-" + window.location.pathname.split("/")[1],
+                    JSON.stringify(newValue)
+                );
             },
             deep: true,
         },
     },
     mounted() {
         this.screenRef = document.querySelector(".card-papers-1");
-    },
-    created() {
-        if (localStorage.getItem("data")) {
-            this.invoices = JSON.parse(localStorage.getItem("data"));
-        } else localStorage.setItem("data", JSON.stringify(this.invoices));
+        if (window.location.pathname.split("/")[1]) {
+            this.$router.push("/" + window.location.pathname.split("/")[1]);
+            if (
+                localStorage.getItem(
+                    "data-" + window.location.pathname.split("/")[1]
+                )
+            ) {
+                this.invoices = JSON.parse(
+                    localStorage.getItem(
+                        "data-" + window.location.pathname.split("/")[1]
+                    )
+                );
+            } else {
+                localStorage.setItem(
+                    "data-" + window.location.pathname.split("/")[1],
+                    JSON.stringify(this.invoices)
+                );
+            }
+        } else {
+            for (let i = 1; i < 1000; i++) {
+                let temp;
+                if (localStorage.getItem("data-" + i)) {
+                    temp = i;
+                } else {
+                    localStorage.setItem(
+                        "data-" + i,
+                        JSON.stringify(this.invoices)
+                    );
+                    return this.$router.push("/" + i);
+                }
+            }
+        }
     },
 };

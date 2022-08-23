@@ -4,6 +4,9 @@
         <b-button variant="link" class="btn-down" @click="generatePDF()"
             >Download Invoice</b-button
         >
+        <b-button @click="modalShow = !modalShow">Open Modal</b-button>
+
+        <b-modal v-model="modalShow">Hello From Modal!</b-modal>
     </div>
 </template>
 
