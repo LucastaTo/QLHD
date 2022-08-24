@@ -28,7 +28,7 @@ export default {
                         amountValue: 0,
                     },
                 ],
-                group: "1",
+                group: window.location.pathname.split("/")[1],
                 title: "INVOICE",
                 image: null,
                 invoiceFrom: "",
@@ -86,6 +86,7 @@ export default {
         },
     },
     mounted() {
+        this.invoices.group = window.location.pathname.split("/")[1]
         this.screenRef = document.querySelector(".card-papers-1");
         if (window.location.pathname.split("/")[1]) {
             this.$router.push("/" + window.location.pathname.split("/")[1]);
@@ -111,6 +112,7 @@ export default {
                 if (localStorage.getItem("data-" + i)) {
                     temp = i;
                 } else {
+                    this.invoices.group = i
                     localStorage.setItem(
                         "data-" + i,
                         JSON.stringify(this.invoices)
