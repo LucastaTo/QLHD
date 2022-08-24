@@ -10,8 +10,20 @@ export default {
     },
     data() {
         return {
-            modalShow: false
+            modalShow: false,
+            listHistory: [],
+            historyLegth: 0
         }
+    },
+    mounted() {
+        let temp
+        for(let i = 1; i < 10000; i++) {
+            if(localStorage.getItem('data-'+ i)) {
+                new Set([this.listHistory.push(i)])
+                 temp = i
+            } 
+        }
+        this.historyLegth = temp
     },
     methods: {
         generatePDF() {
@@ -43,5 +55,8 @@ export default {
                     fileLink.click();
                 });
         },
+        changeInvoice(item) {
+            window.location.href ="http://localhost:8000/" + item
+        }
     },
 };
