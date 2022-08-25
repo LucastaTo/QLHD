@@ -8,8 +8,8 @@
 
         <b-modal v-model="modalShow" hide-header hide-footer>
             <div class="itemHistory">
-                <b-card v-for="(item) in listHistory" @click.self="changeInvoice(item)">
-                    <button id="btnClear" @click="clearHistory(item)"  v-show="item !== Number(invoiceAccept)">X</button>
+                <b-card v-for="(item) in listHistory" @click="changeInvoice(item)">
+                    <button id="btnClear" @click.stop="clearHistory(item)"  v-show="item !== Number(invoiceAccept)">X</button>
                     <span class="title">Invoice</span> <b-badge variant="success" style="border-radius: 50%">{{ item }}</b-badge>
                 </b-card>
             </div>
