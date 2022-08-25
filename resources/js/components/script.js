@@ -78,7 +78,7 @@ export default {
             handler(newValue) {
                 this.invoices = newValue;
                 localStorage.setItem(
-                    "data-" + window.location.pathname.split("/")[1],
+                    "data-" + newValue.group,
                     JSON.stringify(newValue)
                 );
             },
@@ -86,7 +86,6 @@ export default {
         },
     },
     mounted() {
-        this.invoices.group = window.location.pathname.split("/")[1]
         this.screenRef = document.querySelector(".card-papers-1");
         if (window.location.pathname.split("/")[1]) {
             this.$router.push("/" + window.location.pathname.split("/")[1]);

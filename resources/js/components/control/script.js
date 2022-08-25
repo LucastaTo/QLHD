@@ -12,7 +12,7 @@ export default {
         return {
             modalShow: false,
             listHistory: [],
-            historyLegth: 0
+            invoiceAccept: 0
         }
     },
     mounted() {
@@ -23,7 +23,9 @@ export default {
                  temp = i
             } 
         }
-        this.historyLegth = temp
+    },
+    updated() {
+        this.invoiceAccept = window.location.pathname.split("/")[1]
     },
     methods: {
         generatePDF() {
@@ -39,7 +41,6 @@ export default {
                     }
                 )
                 .then((response) => {
-                    console.log(response);
                     var fileURL = window.URL.createObjectURL(
                         new Blob([response.data])
                     );
@@ -57,6 +58,10 @@ export default {
         },
         changeInvoice(item) {
             window.location.href ="http://localhost:8000/" + item
-        }
+        },
+        clearHistory(item) {
+            localStorage.removeItem("data-" + item)
+            this.listHistory = this.listHistory.filter(val => val !== item)
+        },
     },
 };

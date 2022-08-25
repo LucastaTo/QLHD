@@ -4,11 +4,12 @@
         <b-button variant="link" class="btn-down" @click="generatePDF()"
             >Download Invoice</b-button
         >
-        <b-button @click="modalShow = !modalShow"  variant="outline-danger" class="border-0 btnCustom" style="font-size:32px;">History <b-badge variant="light" class="badgeCustom">{{ historyLegth }}</b-badge></b-button>
+        <b-button v-if="listHistory.length !== 0" @click="modalShow = !modalShow"  variant="outline-danger" class="border-0 btnCustom" style="font-size:32px;">History <b-badge variant="light" class="badgeCustom">{{ listHistory.length }}</b-badge></b-button>
 
         <b-modal v-model="modalShow" hide-header hide-footer>
             <div class="itemHistory">
-                <b-card v-for="(item) in listHistory" @click="changeInvoice(item)">
+                <b-card v-for="(item) in listHistory" @click.self="changeInvoice(item)">
+                    <button id="btnClear" @click="clearHistory(item)"  v-show="item !== Number(invoiceAccept)">X</button>
                     <span class="title">Invoice</span> <b-badge variant="success" style="border-radius: 50%">{{ item }}</b-badge>
                 </b-card>
             </div>
@@ -47,15 +48,38 @@
     grid-template-columns: auto auto;
     grid-column-gap: 16px;
     grid-row-gap: 24px;
+    z-index: 1;
 }
 .card {
     text-align: center;
     background: honeydew;
     color: red;
     cursor: pointer;
+    position: relative;
+    z-index: 1;
 }
 .title {
     font-size: 18px;
     font-weight: 500;
+}
+#btnClear {
+    position: absolute;
+    display: block;
+    top: 5px;
+    border-radius: 50%;
+    font-size: 12px;
+    right: 10px;
+    padding: 0 5px;
+    text-align: center;
+    color: #fff;
+    background: #3a3a3a;
+    box-shadow: none;
+    border: none;
+    z-index: 2;
+}
+
+#btnClear:hover {
+    text-decoration: none;
+    background: #009e74;
 }
 </style>
